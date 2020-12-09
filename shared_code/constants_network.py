@@ -51,6 +51,7 @@ class NODE:
     G5_ATTRIBUTE = "G5"
     G6_ATTRIBUTE = "G6"
     METADATA_GROUP_PREFIX_ATTRIBUTE = "GNPSGROUP:"  # e.g., GNPSGROUP:BLANK, GNPSGROUP:CASE (from metadata file)
+    FORMATTED_ADDUCT_SUFFIX_ATTRIBUTE = " (formatted)"  # suffix for harmonized adducts
 
     # Library match specific
     ADDUCT_LIB_ATTRIBUTE = "Adduct"

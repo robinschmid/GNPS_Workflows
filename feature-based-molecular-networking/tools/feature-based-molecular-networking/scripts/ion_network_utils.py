@@ -234,6 +234,8 @@ def merge_nodes(G, nodes, new_node_type=CONST.NODE.COLLAPSED_TYPE, add_ion_inten
     # redirect all edges to the first node and remove nodes
     redirect_edges_and_delete_nodes(G, nodes[1:], main_node, best_edge_att, edge_comparator)
 
+    # TODO remove selfloop edge if not only edge
+
 
 def redirect_edges_and_delete_nodes(G, nodes, target_node, best_edge_att=CONST.EDGE.SCORE_ATTRIBUTE,
                                     edge_comparator=operator.ge):
