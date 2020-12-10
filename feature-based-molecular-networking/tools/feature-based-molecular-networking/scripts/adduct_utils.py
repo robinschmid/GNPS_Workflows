@@ -268,6 +268,5 @@ if __name__ == '__main__':
     for a in list2:
         harmonized = clean_adduct(a, True, True, True, True)
         harmonized_keep_names = clean_adduct(a, True, True, False, True)
-        # print("{0}\t{1}\t{3}\t{2}".format(a, harmonized[0], str(harmonized[1]), harmonized_keep_names[0]))
-        print("{0:14} --> {1:14} or {3:14} ({2})".format(a, harmonized[0], str(harmonized[1]), harmonized_keep_names[
-            0]))
+        print("{0}\t{1}\t{3}\t{2}".format(a, harmonized[0], str(harmonized[1]), harmonized_keep_names[0]))
+        #print("{0:14} --> {1:14} or {3:14} ({2})".format(a, harmonized[0], str(harmonized[1]), harmonized_keep_names[0]))
