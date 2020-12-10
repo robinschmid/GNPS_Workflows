@@ -1,3 +1,4 @@
+
 # define the charge of common adduct parts
 # neutral losses do not need to be added
 CHARGE_DICT = dict(
@@ -50,6 +51,9 @@ class AdductPart(object):
         :param name: any part of adduct name: H2O or 2H2O. Will split number and name
         :return:
         """
+        if len(name) <= 0:
+            return AdductPart(sign, "", 1, replace_names_by_formulas)
+
         multiplier = ""
         new_name = name
         for i in range(len(name)):
@@ -57,6 +61,22 @@ class AdductPart(object):
                 multiplier = name[0:i]
                 new_name = name[i:]
                 break
+
+        # handle special case where multiplier is at the end:
+        # M+H2 should be M+2H,  + keep NH4 same
+        # 1 capital letter, n small letters, and number at the end
+        if len(multiplier) <= 0 and name[-1].isdigit():
+            capital_letters = 0
+            for i in reversed(range(len(name))):
+                if name[i].isdigit():
+                    multiplier = name[i] + multiplier
+                elif name[i].isupper():
+                    capital_letters += 1
+            if capital_letters == 1:  # found multiplier at the end
+                new_name = name[0:len(name)-len(multiplier)]
+            else:  # too many capital letters - no multiplier - is formula (e.g. NH4)
+                multiplier = ""
+
         return AdductPart(sign, new_name, multiplier, replace_names_by_formulas)
 
     def get_formula(self, default=""):
