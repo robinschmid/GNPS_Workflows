@@ -270,10 +270,10 @@ def add_library_search_results_to_graph(G, library_search_filename, annotation_p
             if adduct is not None and len(adduct)>0:
                 clean_adduct = adduct_utils.clean_adduct(adduct)
                 G.node[cluster_index][annotation_prefix + CONST.NODE.ADDUCT_LIB_ATTRIBUTE +
-                                      CONST.NODE.FORMATTED_ADDUCT_SUFFIX_ATTRIBUTE]
+                                      CONST.NODE.FORMATTED_ADDUCT_SUFFIX_ATTRIBUTE] = clean_adduct
             if ion_identity is not None and len(ion_identity)>0:
                 clean_ion_identity = adduct_utils.clean_adduct(ion_identity)
-                G.node[cluster_index][CONST.NODE.IIN_ADDUCT_ATTRIBUTE + CONST.NODE.FORMATTED_ADDUCT_SUFFIX_ATTRIBUTE]
+                G.node[cluster_index][CONST.NODE.IIN_ADDUCT_ATTRIBUTE + CONST.NODE.FORMATTED_ADDUCT_SUFFIX_ATTRIBUTE] = clean_ion_identity
             # check if adduct and ion identity equals
             if ion_identity is not None and len(ion_identity)>0 and adduct is not None and len(adduct) > 0:
                 G.node[cluster_index][annotation_prefix + CONST.NODE.IIN_ADDUCT_EQUALS_LIB_ATTRIBUTE] = adduct_utils.equal_adducts(ion_identity, adduct)
